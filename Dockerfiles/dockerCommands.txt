@@ -1,0 +1,22 @@
+docker pull htaox/gremlin-server
+
+docker run -it -rm --name search-jetty -P  -v ~/Documents/docker-files/docker-jetty/kalgudi-search.war:/var/lib/jetty/webapps/ROOT.war jetty-server
+
+docker exec -it <> /bin/bash
+
+docker images
+
+docker rmi <>
+
+docker rm <>
+
+docker stop <>
+
+docker run -it --rm --name gremlin-server -P  htaox/gremlin-server
+
+docker run -it -d --name gremlin-server -p 8182:8182 -v ~/Documents/docker-files/docker-gremlin/gremlin:/var/lib/gremlin -v ~/Documents/docker-files/docker-gremlin/graph.db:/var/lib/neo4j/data/databases/graph.db aglassman/tinkerpop3 /var/lib/gremlin/bin/gremlin-server.sh  /var/lib/gremlin/conf/gremlin-server.yaml
+
+docker run -it -d --name cloudsearch -p 15808:15808 pallantdigital/nozama-cloudsearch
+
+
+---------------------------------------------------------------------------------------------------------

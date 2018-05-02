@@ -1,0 +1,20 @@
+//edit file
+sudo nano  /lib/systemd/system/docker.service
+
+//Modify the line starting with ExecStart
+
+ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:4243
+
+// -H tcp://0.0.0.0:4243 is added to existing line
+
+//reload the daemon service
+
+sudo systemctl daemon-reload
+
+//restart docker service
+
+sudo service docker restart
+
+//test docker API at terminal with curl 
+
+curl http://localhost:4243/version

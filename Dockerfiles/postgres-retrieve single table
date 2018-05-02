@@ -1,0 +1,31 @@
+sudo -u postgres pg_dump -Fc  --data-only --table=active_profiles bigdatabaseone > activeprofiles.sql
+
+
+postgres@stats:/home/stats$ pg_dump -t active_profiles bigdatabaseone | psql test
+
+
+\copy tablename to /var/lib/postgresql/test.csv DELIMITER ',' CSV;
+
+
+\copy tablename("id","mobileno","pfrcreateddate","bizkey","data","isactive","emailid") from 'test.csv' DELIMITER ',' CSV;
+
+
+create table horticulture (Id serial PRIMARY KEY,Name text,Village text,Mandal text,District text,Address text,Location_Obj jsonb,Mobile text,Product_IDs text,Category text,Acreage text,Member_of text[],Source_from text,
+Survey_details text,Irrigation_type text,Bank_name text,Bank_branch text,Bank_account text,Bank_ifsc text,Product_details jsonb)
+
+
+\copy horticulture("Id","Name","Village",Mandal,"District","Address","Location_Obj","Mobile","Product_IDs","Category","Acreage","Member_of","Source_from","Survey_details","Irrigation","Bank_name",Bank_branch","Bank_account","Bank_ifsc","Product_details","locationstatus")
+from 'horti.csv' DELIMITER ',' CSV;
+
+
+\copy mulkanoor_farmers("id","data") from 'mulkanoor_farmers.csv' DELIMITER ',' CSV;
+
+\copy sync_products("kpid","kpname","kp_base_unit_name","kp_base_unit_id","convertion","standard_unit_id","standard_unit_name","mpid") from 'sync_products' DELIMITER ',' CSV;
+
+
+\copy mlk_charges(
+ k_cid character varying,
+ m_cid character varying,
+ k_name character varying,
+ m_name character varying
+)

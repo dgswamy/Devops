@@ -1,0 +1,41 @@
+sudo apt update
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt -y install ansible
+
+// Configure ssh for all remote servers
+
+ssh-keygen  //press enter for next steps
+
+ssh-copy-id servername@IP
+
+// edit changes in ansible hosts file
+
+sudo nano /etc/ansible/hosts
+
+EX:
+
+[db-servers]
+servername@IP
+
+//save the file and test
+
+ansible -m ping all or servername
+
+
+//file transfer
+
+ansible servername -m copy -a "src=filepath dest=destpath"
+//mkdir
+
+ansible servername -m file -a "dest=destpath mode=777 state=directory"
+
+//delete
+
+ansibel servername -m file -a "dest=destpath state=absent"
+
+
+//Running shell commands with ansible
+Ex:
+
+ansible -m shell -a "service nginx status" servername

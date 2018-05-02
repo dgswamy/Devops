@@ -1,0 +1,24 @@
+// Take two machines one for Master and another for Agent
+
+1 . Install ubuntu
+2.  Install ssh with this command
+    sudo apt install -y ssh
+3.  edit /etc/hosts file in two machines
+    provide FQDN of master and agent and ip address if not
+    with hostname.
+4.  Download puppet from official repo
+    curl -O https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+5.  Once downlaoded enter command
+     sudo dpkg -i puppetlabs-release-pc1-xenial.deb
+     sudo apt update
+6. sudo apt-get install puppetserver
+7. Customise memory locaiton if necessary
+   sudo nano /etc/default/puppetserver
+   edit JAVA_ARGS line
+8. open firewall
+   sudo ufw allow 8140 (default port number)
+9. start puppetserver
+   sudo systemctl start puppetserver ---once started check status
+   sudo systemctl status puppetserver
+-------------------------------------------------------------------------------
+Install puppet-agent in agent machine

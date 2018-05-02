@@ -1,0 +1,12 @@
+---
+- hosts: test
+  become_user: root
+  tasks:
+     - name: Update apt-cache
+       apt: update_cache=yes
+  handlers:
+      - name: restart nginx
+        service: name=nginx state=restarted
+
+
+      

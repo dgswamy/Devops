@@ -1,0 +1,47 @@
+//Installing Docker in Ubuntu
+// Adding GPG keys from docker repo to system
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+//Add the Docker repository to APT sources:
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+//update the repo
+sudo apt-get update
+
+//Install Docker 
+
+sudo apt-get install -y docker-ce
+
+//Uninstall Docker 
+sudo apt-get purge docker-engine
+sudo apt-get autoremove --purge docker-engine
+---------------------------------------------------------------------------------------------------------------
+
+
+//Installing Docker in Windows System
+
+Download docker tool box from this link
+
+https://docs.docker.com/toolbox/toolbox_install_windows/
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+//Intalling Docker in Centos or Redhat
+
+yum update -y
+yum -y install wget
+
+wget https://download.docker.com/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
+yum -y install docker-ce
+//Starting docker service command
+
+ sudo service docker start
+
+ //Starting Docker at Boot
+
+ sudo chkconfig docker on
+
+ sudo systemctl enable docker 

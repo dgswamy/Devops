@@ -1,0 +1,14 @@
+---
+- hosts: test
+  become: yes
+  become_user: root
+  tasks:
+   - name: Update apt
+     apt: update_cache=yes
+   - name: Install Nginx
+     apt: pkg=nginx state=installed update_cache=true
+handlers:
+  - name: restart apache
+    service: name=apache2 state=restarted
+  - name: other handler
+    service: name=other state=restarted
