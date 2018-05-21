@@ -60,4 +60,4 @@ window.onload=function(){
 }
 */
 
-
+document.getElementsByName("placeholder")

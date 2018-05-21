@@ -1,0 +1,55 @@
+Installing Judge-API in AWS 
+
+Step 1 : 
+ Launch Ec2 instance with ubuntu os 
+
+ Min Requirements:
+
+ 4gb Ram and 25gb hard disk.
+
+Step 2:
+
+ Install docker in Ec2 instance
+
+ sudo apt-get update
+ sudo apt install -y docker.io
+ sudo apt install -y docker-compose
+
+ To run docker without sudo privileages
+
+ sudo usermod -aG docker $USER
+
+ After running above command logout from terminal and login again.
+
+
+ Step 3: 
+
+ Download docker-compose and configuration file
+
+ wget https://raw.githubusercontent.com/judge0/api/master/docker-compose.prod.yml -O docker-compose.yml
+
+ wget https://raw.githubusercontent.com/judge0/api/master/judge0-api.conf.default -O judge0-api.conf
+
+ Step 4:
+
+ Once Download completed edit docker-compose file
+ and modify postgres version to 9.6.5
+
+Ex: Before modification
+ db:
+    image: postgres
+    env_file: judge0-api.conf
+    volumes:
+      - ./srv/postgres-data:/var/lib/postgresql/data/
+    restart: always
+
+After modification
+
+db:
+    image: postgres:9.6.5
+    env_file: judge0-api.conf
+    volumes:
+      - ./srv/postgres-data:/var/lib/postgresql/data/
+    restart: always
+
+Completed............
