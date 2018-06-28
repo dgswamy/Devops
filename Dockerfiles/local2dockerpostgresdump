@@ -1,0 +1,3 @@
+//Dumping local psotgres data to docker postgres command
+
+cat your_dump.sql | docker exec -i your-db-container psql -U postgres
